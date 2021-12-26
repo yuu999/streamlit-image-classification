@@ -65,14 +65,15 @@ def welcome(opencv_image):
 
 
 def image_processing(opencv_image):
-    st.header("Thresholding, Edge Detection and Contours")
+    st.header("Image Processing.")
+    st.subheader("Thresholding, Edge Detection and Contours")
     
-    if st.button('See Original Image of Tom'):
-        original = Image.open('img/sample.jpg')
-        st.image(original, use_column_width=True)
-        
     image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2GRAY)
     
+    # if st.button('See Sample Image'):
+    #     image = Image.open('img/sample.jpg')
+    #     st.image(image, use_column_width=True)
+
     x = st.slider('Change Threshold value',min_value = 50,max_value = 255)
     ret,thresh1 = cv2.threshold(image,x,255,cv2.THRESH_BINARY)
     thresh1 = thresh1.astype(np.float64)
@@ -86,7 +87,7 @@ def image_processing(opencv_image):
     if st.button('Canny Edge Detector'):
         edges = cv2.Canny(opencv_image,50,300)
         st.image(edges,use_column_width=True,clamp=True)
-      
+
     y = st.slider('Change Value to increase or decrease contours',min_value = 50,max_value = 255)     
     
     if st.button('Contours'):
@@ -102,7 +103,6 @@ def image_processing(opencv_image):
 
 
 def face_detection(opencv_image):
-    
     st.header("Face Detection using haarcascade")
   
     img_rgb_ = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
@@ -159,8 +159,7 @@ def face_detection(opencv_image):
 
 def object_detection(opencv_image):
 
-    st.title("Dehao's Simple Image Classification App")
-    st.write("")
+    st.header("Image Classification By ResNet50")
     img = cv2pil(opencv_image)
     st.image(img, caption='Uploaded Image.', use_column_width=True)
     st.write("")
