@@ -40,7 +40,7 @@ def main():
             object_detection(opencv_image)
     
     else:
-        st.subheader('You must upload jpeg file!')
+        st.warning('### Welcome. Please upload any image (.jpg) first.')
 
 
 def cv2pil(opencv_image):
@@ -56,10 +56,10 @@ def cv2pil(opencv_image):
 
 
 def welcome(opencv_image):
-        
-    st.subheader('A simple app that shows different image processing algorithms. You can choose the options'
-            + ' from the left. I have implemented only a few to show how it works on Streamlit. ' + 
-            'You are free to add stuff to this app.')
+    
+    st.header('Welcom!!')
+    st.subheader('A simple app that shows different image processings.')
+    st.subheader('You can choose the options from the select box in the sidebar.')
     
     st.image(opencv_image, channels="BGR")
 
